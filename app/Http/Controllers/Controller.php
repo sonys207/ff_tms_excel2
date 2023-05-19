@@ -535,9 +535,9 @@ class Controller extends BaseController
     {
         #ini_set('max_execution_time', '0');
          //send API request to get service bus sas token
-         $uri="https://SBN-TNTDV-TMSTSET01.servicebus.windows.net/magento-tms";
+         $uri="https://SBN-USTEST-TMS-CC.servicebus.windows.net/magento-tms";
          $sasKeyName="magento-tms_send";
-         $sasKeyValue="M7jySLOK0jICBCAZ4Hy75hS/m3x7owhlB5pTsX1W/24=";
+         $sasKeyValue="+7M/ZzANp1b7OrVnIwQqRZpkLY9VzZmIZ+ASbBPoVQQ=";
          $SASToken=API_ServiceBus_Token::generateSasToken($uri,$sasKeyName,$sasKeyValue);
          $header=array(
             'Content-Type:application/atom+xml;type=entry;charset=utf-8 ',
@@ -549,7 +549,7 @@ class Controller extends BaseController
        for ($i=0; $i<=0; $i++)
          {  
            // $order_id= (string)(010000006+$i);
-            $order_id = 100670090+$i;
+            $order_id = 100000001+$i;
             $order_id = str_pad($order_id,9,"0",STR_PAD_LEFT);
          //send message to service bus with token
           $cURL = curl_init();
@@ -595,7 +595,7 @@ class Controller extends BaseController
       
          $json_order_status_change = json_encode($order_status_change);
         // dd($postdatajson);
-         curl_setopt($cURL, CURLOPT_URL, "https://SBN-TNTDV-TMSTSET01.servicebus.windows.net/magento-tms/messages");
+         curl_setopt($cURL, CURLOPT_URL, "https://SBN-USTEST-TMS-CC.servicebus.windows.net/magento-tms/messages");
          
          curl_setopt($cURL, CURLOPT_HTTPHEADER, $header); 
          curl_setopt($cURL, CURLOPT_POSTFIELDS, $json_order_status_change);
