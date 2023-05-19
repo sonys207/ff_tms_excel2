@@ -596,7 +596,6 @@ class Controller extends BaseController
          $json_order_status_change = json_encode($order_status_change);
         // dd($postdatajson);
          curl_setopt($cURL, CURLOPT_URL, "https://SBN-USTEST-TMS-CC.servicebus.windows.net/magento-tms/messages");
-         
          curl_setopt($cURL, CURLOPT_HTTPHEADER, $header); 
          curl_setopt($cURL, CURLOPT_POSTFIELDS, $json_order_status_change);
          curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
